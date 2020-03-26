@@ -20,7 +20,7 @@ request.onreadystatechange = function () {
     console.log('Headers:', this.getAllResponseHeaders());
     console.log('Body:', this.responseText);
     var data = JSON.parse(this.responseText);
-    console.log('Displaying stored data:', data.woonplaatsnaam);
+    console.log('Displaying stored data:', data._embedded.verblijfplaatshistorie[0].woonplaatsnaam);
   }
 };
 // Sent the request out
@@ -28,7 +28,9 @@ request.send();
 
 
 // Handle incoming GET requests to /ingeschrevenpersonen 
-router.get('/', (req, res) => {
+router.get(`${haalCentraalAPI}9999994669/verblijfplaatshistorie`, (req, res) => {
+    res.header('x-api-key', haalCentraalAPIKey);
+    myVerblijfplaatshistorie = new JSONObject(res.body);
     res.status(200).json({
         message: 'Personen were fetched'
     });
