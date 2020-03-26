@@ -20,7 +20,7 @@ request.onreadystatechange = function () {
     console.log('Headers:', this.getAllResponseHeaders());
     console.log('Body:', this.responseText);
     var data = JSON.parse(this.responseText);
-    console.log('Displaying stored data:', data.burgerservicenummer);
+    console.log('Displaying stored data:', data.woonplaatsnaam);
   }
 };
 // Sent the request out
