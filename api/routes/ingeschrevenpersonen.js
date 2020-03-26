@@ -27,23 +27,8 @@ request.onreadystatechange = function () {
 request.send();
 
 
-// Now do the same with app.get
-var app = express();
-
-app.get(`${haalCentraalAPI}9999994669/verblijfplaatshistorie`, (req,res) => {
-    if (error) return console.error(error);
-        res.writeHead(200, {
-        'x-api-key': haalCentraalAPIKey,
-        'Content-Type': 'application/json'
-    });
-    res.write();
-    res.end();
-});
-
-
-// Handle incoming GET requests to /personen 
+// Handle incoming GET requests to /ingeschrevenpersonen 
 router.get('/', (req, res) => {
-    res.header('x-api-key', haalCentraalAPIKey);
     res.status(200).json({
         message: 'Personen were fetched'
     });
