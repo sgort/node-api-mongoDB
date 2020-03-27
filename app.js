@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
-const persoonRoutes = require('./api/routes/ingeschrevenpersonen');
+//const persoonRoutes = require('./api/routes/ingeschrevenpersonen');
+const loopRoutes = require('./api/routes/loopthroughjson');
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -27,7 +29,8 @@ app.use((req, res, next) => {
 // Routes which should handle requests
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
-app.use('/ingeschrevenpersonen', persoonRoutes);
+//app.use('/ingeschrevenpersonen', persoonRoutes);
+app.use('/loopthroughjson', loopRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not found');

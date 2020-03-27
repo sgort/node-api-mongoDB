@@ -40,6 +40,7 @@ axios.get(`${haalCentraalAPI}/999994669`, {headers: config})
     console.log(error);
 });
 
+/*
 // GET verblijfplaatshistorie
 axios.get(`${haalCentraalAPI}/999994669/verblijfplaatshistorie`, {headers: config})
   .then(response => {
@@ -48,7 +49,7 @@ axios.get(`${haalCentraalAPI}/999994669/verblijfplaatshistorie`, {headers: confi
   .catch(error => {
     console.log(error);
 });
-
+*/
 
 // Code for tutorial
 router.get('/:BSN', (req, res, next) => {
