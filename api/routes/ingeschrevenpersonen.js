@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
-var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const axios = require('axios');
 
 // Constant URL & API key value for Haal Centraal BRP
 const haalCentraalAPI ='https://www.haalcentraal.nl/haalcentraal/api/brp/ingeschrevenpersonen';
 const haalCentraalAPIKey = 'drsgPGjarGGRl2pKQTnLqfj3NfsTPBhR';
+
+/*
+var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 // Initialize our XMLHttpRequest object
 var request = new XMLHttpRequest();
@@ -25,17 +28,29 @@ request.onreadystatechange = function () {
 };
 // Sent the request out
 request.send();
+*/
 
-
-// Handle incoming GET requests to /ingeschrevenpersonen 
-router.get(`${haalCentraalAPI}9999994669/verblijfplaatshistorie`, (req, res) => {
-    res.header('x-api-key', haalCentraalAPIKey);
-    myVerblijfplaatshistorie = new JSONObject(res.body);
-    res.status(200).json({
-        message: 'Personen were fetched'
-    });
+// GET ingeschreven Natuurlijke Personen
+let config = {'x-api-key': haalCentraalAPIKey};
+axios.get(`${haalCentraalAPI}/999994669`, {headers: config})
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.log(error);
 });
 
+// GET verblijfplaatshistorie
+axios.get(`${haalCentraalAPI}/999994669/verblijfplaatshistorie`, {headers: config})
+  .then(response => {
+    console.log(response.data._embedded.verblijfplaatshistorie[1]);
+  })
+  .catch(error => {
+    console.log(error);
+});
+
+
+// Code for tutorial
 router.get('/:BSN', (req, res, next) => {
     const id = req.params.BSN;
     if (id === '999994669') {

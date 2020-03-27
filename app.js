@@ -29,8 +29,6 @@ app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
 app.use('/ingeschrevenpersonen', persoonRoutes);
 
-console.log('This line is printed on the terminal via app.js');
-
 app.use((req, res, next) => {
     const error = new Error('Not found');
     error.status = 404;
