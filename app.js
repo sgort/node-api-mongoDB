@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
-const persoonRoutes = require('./api/routes/ingeschrevenpersonen');
-//const loopRoutes = require('./api/routes/loopthroughjson');
+//const persoonRoutes = require('./api/routes/ingeschrevenpersonen');
+const loopRoutes = require('./api/routes/loopthroughjson');
 //const fetch_persoonRoutes = require('./api/routes/ingeschrevenpersonen_fetch');
 
 
@@ -30,8 +30,8 @@ app.use((req, res, next) => {
 // Routes which should handle requests
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
-app.use('/ingeschrevenpersonen', persoonRoutes);
-//app.use('/loopthroughjson', loopRoutes);
+//app.use('/ingeschrevenpersonen', persoonRoutes);
+app.use('/loopthroughjson', loopRoutes);
 //app.use('/ingeschrevenpersonen_fetch', fetch_persoonRoutes);
 
 app.use((req, res, next) => {
