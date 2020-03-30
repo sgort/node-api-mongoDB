@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const fetch = require('node-fetch');
 
 // Constant URL & API key value for Haal Centraal BRP
 const haalCentraalAPI ='https://www.haalcentraal.nl/haalcentraal/api/brp/ingeschrevenpersonen';
+const haalCentraalAPIbaseURL ='https://www.haalcentraal.nl/haalcentraal/api/brp';
 const haalCentraalAPIKey = 'drsgPGjarGGRl2pKQTnLqfj3NfsTPBhR';
 
 /*
@@ -30,7 +32,8 @@ request.onreadystatechange = function () {
 request.send();
 */
 
-// GET ingeschreven Natuurlijke Personen
+/*
+// GET ingeschreven Natuurlijke Personen via axios
 let config = {'x-api-key': haalCentraalAPIKey};
 axios.get(`${haalCentraalAPI}/999994669`, {headers: config})
   .then(response => {
@@ -39,6 +42,26 @@ axios.get(`${haalCentraalAPI}/999994669`, {headers: config})
   .catch(error => {
     console.log(error);
 });
+*/
+
+// GET ingeschreven Natuurlijke Personene via fetch
+fetch(haalCentraalAPIbaseURL + '/ingeschrevenpersonen/999994669', {
+  // Default options are marked with *
+  method: 'GET', // *GET, POST, PUT, DELETE, etc.
+  mode: 'cors', // no-cors, *cors, same-origin
+  cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+  credentials: 'same-origin', // include, *same-origin, omit
+  headers: {
+    'x-api-key': haalCentraalAPIKey,
+    'Content-Type': 'application/json'
+  },
+  redirect: 'follow', // manual, *follow, error
+  referrerPolicy: 'no-referrer' // no-referrer, *client
+  }) 
+  .then(res => res.json())
+  .then(json => console.log(json))
+  .catch(err => console.error('Error: ', err));
+
 
 /*
 // GET verblijfplaatshistorie

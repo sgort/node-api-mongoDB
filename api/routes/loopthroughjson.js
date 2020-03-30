@@ -48,6 +48,7 @@ for(let [key, value] of Object.entries(brpObject)) {
         getValues(brpObject[key], result);
     }
 };
+//return result;
 
 
 console.log('');
