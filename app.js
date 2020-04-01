@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
-//const persoonRoutes = require('./api/routes/ingeschrevenpersonen');
+// persoonRoutes = require('./api/routes/ingeschrevenpersonen');
 const loopRoutes = require('./api/routes/loopthroughjson');
 //const fetch_persoonRoutes = require('./api/routes/ingeschrevenpersonen_fetch');
 
